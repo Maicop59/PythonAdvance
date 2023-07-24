@@ -1,0 +1,23 @@
+{% include "list_customer.html" %}
+
+
+{% if customers.has_previous %}
+    <a href="?page={{ customers.previous_page_number }}">Previous</a>
+{% else %}
+    <a>Previous</a>
+{% endif %}
+
+{% for i in customers.paginator.page_range %}
+    {% if customers.number == i%}
+        <a href="#">{{i}}</a>
+    {% else %}
+        <a href="?page={{i}}">{{i}}</a>
+    {% endif %}
+{% endfor %}
+
+
+{% if customers.has_next %}
+    <a href="?page={{customers.next_page_number }}">Next</a>
+{% else %}
+    <a>Next</a>
+{% endif %}
