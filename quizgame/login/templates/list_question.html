@@ -1,0 +1,27 @@
+    {% for quesion in questions %}
+    <h2>Câu <span>{{quesion.id}}</span>:</h2>
+    </tr>
+        <td>{{ quesion.content }}</td>
+        <br>
+        <br>
+        <td>A. <span>{{ quesion.A }}</span></td><br>
+        <td>B. <span>{{ quesion.B }}</span></td><br>
+        <td>C. <span>{{ quesion.C }}</span></td><br>
+        <td>D. <span>{{ quesion.D }}</span></td><br><br>
+        <td>{{ quesion.Note }}</td><br>
+    <tr>
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="GamerAnswer" placeholder="nhập đáp án và ấn Sumbit">
+        <input type="submit" name="submit" value="submit">
+    </form> 
+    {% endfor %}
+
+{% load cache %}
+{% cache 500 testcache1 %}
+<p>
+    testcache
+</p>
+
+{% endcache %}

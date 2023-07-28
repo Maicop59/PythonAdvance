@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <h1>My Site</h1>
+
+    <a href="{%url 'home' %}">Home</a>
+    <span>/</span>
+
+    {% if current_user %}
+        <a href="{% url 'logout' %}">Logout</a>
+        <hr>
+        <h2>Welcom <span style="color: dodgerblue;">{{ current_user }}</span>!</h2>
+        <h2>Nhập vào số câu hỏi muốn chơi và ấn nút ok để xác nhân</h2>
+        <br>
+        <form method="POST">
+            <input type="text" name="quantity" placeholder="Quantity Question">
+            <br>
+            <input type="submit" name="OK" value="OK">
+        </form>
+        
+
+    {% else %}
+        <a href="{%url 'login' %}">Login</a>
+        <span>/</span>
+        <a href="{% url 'signup' %}">Signup</a>
+        <hr>
+        <h2>Login to access this website!</h2>
+    {% endif %}
+
+    {% block body %}{% endblock %}
+</body>
+</html>
